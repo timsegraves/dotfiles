@@ -1,5 +1,6 @@
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
+export ZSH_THEME="smt"
 
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/Development
@@ -20,3 +21,21 @@ compinit
 
 # load every completion after autocomplete loads
 for config_file ($ZSH/**/completion.sh) source $config_file
+
+# Load the theme
+if [ "$ZSH_THEME" = "random" ]
+then
+  themes=($ZSH/zsh/themes/*zsh-theme)
+  N=${#themes[@]}
+  ((N=(RANDOM%N)+1))
+  RANDOM_THEME=${themes[$N]}
+  source "$RANDOM_THEME"
+  echo "[oh-my-zsh] Random theme '$RANDOM_THEME' loaded..."
+else
+  if [ ! "$ZSH_THEME" = ""  ]
+  then
+    source "$ZSH/zsh/themes/$ZSH_THEME.zsh-theme"
+  fi
+fi
+
+[[ $- == *i* ]]   &&   . ~/.dotfiles/git/git-prompt/git-prompt.sh
