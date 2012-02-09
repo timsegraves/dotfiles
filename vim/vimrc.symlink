@@ -18,6 +18,7 @@ set formatoptions+=n       " support for numbered/bullet lists
 set virtualedit=block      " allow virtual edit in visual block ..
 
 au BufReadPost Vagrantfile set syntax=ruby
+filetype plugin indent on " Enable filetype-specific indenting and plugins
 
 " ----------------------------------------------------------------------------
 "  Remapping
