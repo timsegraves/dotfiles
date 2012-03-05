@@ -18,6 +18,7 @@ set formatoptions+=n       " support for numbered/bullet lists
 set virtualedit=block      " allow virtual edit in visual block ..
 
 au BufReadPost Vagrantfile set syntax=ruby
+au BufNewFile,BufRead *.less set filetype=less
 filetype plugin indent on " Enable filetype-specific indenting and plugins
 
 " ----------------------------------------------------------------------------
@@ -47,6 +48,7 @@ vnoremap <Up> gk
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
 
+
 " ----------------------------------------------------------------------------
 "  UI
 " ----------------------------------------------------------------------------
@@ -63,7 +65,66 @@ set whichwrap+=<,>,h,l,[,] " backspace and cursor keys wrap to
 set shortmess=filtIoOA     " shorten messages
 set report=0               " tell us about changes
 set nostartofline          " don't jump to the start of line when scrolling
+"set wildignore+="tmp/*","coverage/*"
 
+" -----------------------------------------------------------------------------
+" IGNORE STUFF
+" ----------------------------------------------------------------------------- 
+
+function! Git_Repo_Cdup() " Get the relative path to repo root
+    "Ask git for the root of the git repo (as a relative '../../' path)
+    let git_top = system('git rev-parse --show-cdup')
+    let git_fail = 'fatal: Not a git repository'
+    if strpart(git_top, 0, strlen(git_fail)) == git_fail
+        " Above line says we are not in git repo. Ugly. Better version?
+        return ''
+    else
+        " Return the cdup path to the root. If already in root,
+        " path will be empty, so add './'
+        return './' . git_top
+    endif
+endfunction
+
+function! CD_Git_Root()
+    execute 'cd '.Git_Repo_Cdup()
+    let curdir = getcwd()
+    echo 'CWD now set to: '.curdir
+endfunction
+nnoremap <LEADER>gr :call CD_Git_Root()<cr>
+
+" Define the wildignore from gitignore. Primarily for CommandT
+function! WildignoreFromGitignore()
+    silent call CD_Git_Root()
+    let gitignore = '.gitignore'
+    if filereadable(gitignore)
+        let igstring = ''
+        for oline in readfile(gitignore)
+            let line = substitute(oline, '\s|\n|\r', '', "g")
+            if line =~ '^#' | con | endif
+            if line == '' | con  | endif
+            if line =~ '^!' | con  | endif
+            if line =~ '/$' | let igstring .= "," . line . "*" | con | endif
+            let igstring .= "," . line
+        endfor
+        let execstring = "set wildignore=".substitute(igstring,'^,','',"g")
+        execute execstring
+        echo 'Wildignore defined from gitignore in: '.getcwd()
+    else
+        echo 'Unable to find gitignore'
+    endif
+endfunction
+nnoremap <LEADER>cti :call WildignoreFromGitignore()<cr>
+nnoremap <LEADER>cwi :set wildignore=''<cr>:echo 'Wildignore cleared'<cr>
+
+nmap <leader>gv :call CD_Git_Root()<cr>\|:CommandT app/views<cr>
+nmap <leader>gc :call CD_Git_Root()<cr>\|:CommandT app/controllers<cr>
+nmap <leader>gm :call CD_Git_Root()<cr>\|:CommandT app/models<cr>
+nmap <leader>gj :call CD_Git_Root()<cr>\|:CommandT app/assets/javascripts<cr>
+nmap <leader>gy :call CD_Git_Root()<cr>\|:CommandT app/assets/stylesheets<cr>
+nmap <leader>gs :call CD_Git_Root()<cr>\|:CommandT spec<cr>
+nmap <leader>gt :call CD_Git_Root()<cr>\|:CommandT app/assets/templates<cr>
+nmap <leader>gl :call CD_Git_Root()<cr>\|:CommandT app/lib<cr>
+nmap <leader>t :call CD_Git_Root()<cr>\|:CommandT <cr>
 
 " ----------------------------------------------------------------------------
 " Visual Cues
