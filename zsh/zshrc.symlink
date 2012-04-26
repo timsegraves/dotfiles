@@ -39,3 +39,6 @@ else
 fi
 
 [[ $- == *i* ]]   &&   . ~/.dotfiles/git/git-prompt/git-prompt.sh
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH=$HOME/bin:$PATH
