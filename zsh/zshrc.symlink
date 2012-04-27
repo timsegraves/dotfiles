@@ -43,3 +43,4 @@ fi
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 keychain ~/.ssh/deploy_king_rsa
+export PATH=$HOME/bin:$PATH
