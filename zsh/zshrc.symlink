@@ -38,7 +38,8 @@ else
   fi
 fi
 
-[[ $- == *i* ]]   &&   . ~/.dotfiles/git/git-prompt/git-prompt.sh
+#[[ $- == *i* ]]   &&   . ~/.dotfiles/git/git-prompt/git-prompt.sh
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export PATH=$HOME/bin:$PATH
+export NODE_PATH=/usr/local/lib/node_modules

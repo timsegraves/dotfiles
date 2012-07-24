@@ -47,7 +47,30 @@ vnoremap <Down> gj
 vnoremap <Up> gk
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
+nnoremap <SPACE> <PAGEDOWN>
+nnoremap <S-SPACE> <PAGEUP>
+nmap / /\v
+cmap s/ s/\v
 
+" Reload vimrc on edit and a shortcut
+nmap <silent> ;v :next $MYVIMRC<CR>
+augroup VimReload
+  autocmd!
+  autocmd BufWritePost $MYVIMRC source $MYVIMRC 
+augroup END
+
+" Persistent Undo
+if has('persistent_undo') 
+  set undofile
+  set undodir=$HOME/tmp/.VIM_UNDO_FILES
+  set undolevels=5000
+endif
+
+" Remember where we left off editing last session
+autocmd BufReadPost *
+\ if line("'\"") > 1 && line("'\"") <= line("$") 
+\| exe "normal! g`\""
+\| endif
 
 " ----------------------------------------------------------------------------
 "  UI
@@ -134,7 +157,7 @@ set showmatch              " brackets/braces that is
 set mat=5                  " duration to show matching brace (1/10 sec)
 set incsearch              " do incremental searching
 set laststatus=2           " always show the status line
-set ignorecase             " ignore case when searching
+set smartcase ignorecase   " ignore case when searching unles theres a capital letter
 set nohlsearch             " don't highlight searches
 set visualbell             " shut the fuck up
 
