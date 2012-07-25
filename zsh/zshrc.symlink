@@ -41,5 +41,7 @@ fi
 #[[ $- == *i* ]]   &&   . ~/.dotfiles/git/git-prompt/git-prompt.sh
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+keychain ~/.ssh/deploy_king_rsa
 export PATH=$HOME/bin:$PATH
 export NODE_PATH=/usr/local/lib/node_modules

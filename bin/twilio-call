@@ -1,0 +1,63 @@
+#!/usr/bin/env ruby
+#
+# twilio-call
+# Tim Segraves / @timsegraves
+#
+# Make a call via the twilio API
+#
+# Example:
+#
+#   twilio-call 555-122-3322 "Hello world, it's Bob"
+#
+# This requires the twilio-ruby gem 
+#
+#   gem install twilio-ruby
+#
+# Requires you set your Twilio credentials in ~/.twiliorc as a simple file of:
+#
+# aaaabbbccc (account id)
+# 333ddddaaaa (auth token)
+# 555-867-5309 (caller id)
+#
+
+require 'rubygems'
+
+['twilio-ruby'].each do |gem|
+  begin
+    require gem
+  rescue LoadError
+    puts "You need to install #{gem}: gem install #{gem}"
+    exit!(1)
+  end
+end
+
+config_file = "#{ENV['HOME']}/.twiliorc"
+unless File.exist?(config_file)
+  puts "You need to type your account id and auth token in "+
+       "`~/.twiliorc`"
+  exit!(1)
+end
+
+accountid,authtoken,callerid = File.read(config_file).split("\n")
+
+if ARGV[0].nil?
+   puts "You need to specify the number to call"
+   exit!(1)
+end
+
+if ARGV[1].nil?
+   puts "You need to specify the message to say"
+   exit!(1)
+end
+
+urls = []
+ARGV.each do |x|
+  @client = Twilio::REST::Client.new accountid, authtoken
+
+  @call = @client.account.calls.create(
+    :from => '+14159341234',
+    :to => ARGV[0],
+    :url => 'http://twilio.com/call-handler'
+  )
+
+end
