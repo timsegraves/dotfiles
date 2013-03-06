@@ -1,5 +1,12 @@
 set noswapfile
 
+" FOR VUNDLE
+set nocompatible               " be iMproved
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
 " ----------------------------------------------------------------------------
 "  Text Formatting
 " ----------------------------------------------------------------------------
@@ -19,7 +26,11 @@ set virtualedit=block      " allow virtual edit in visual block ..
 
 au BufReadPost Vagrantfile set syntax=ruby
 au BufNewFile,BufRead *.less set filetype=less
+au BufNewFile,BufRead *.json_builder set filetype=ruby
 filetype plugin indent on " Enable filetype-specific indenting and plugins
+
+" Pathogen loader
+execute pathogen#infect()
 
 " ----------------------------------------------------------------------------
 "  Remapping
@@ -170,3 +181,6 @@ function! StripWhitespace ()
     exec ':%s/ \+$//gc'
 endfunction
 map ,s :call StripWhitespace ()<CR>
+
+
+Bundle 'YouCompleteMe'

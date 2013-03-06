@@ -42,6 +42,10 @@ fi
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-keychain ~/.ssh/deploy_king_rsa
 export PATH=$HOME/bin:$PATH
 export NODE_PATH=/usr/local/lib/node_modules
+
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

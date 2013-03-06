@@ -45,7 +45,7 @@ rvm_prompt(){
   then
 	  echo "%{$fg_bold[yellow]%}$(rvm tools identifier)%{$reset_color%}"
 	else
-	  echo ""
+	  echo "rbenv version-name"
   fi
 }
 

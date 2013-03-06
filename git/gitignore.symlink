@@ -5,3 +5,9 @@
 *.swp
 *.rbc
 *.DS_Store
+.powrc
+.sass-cache
+.rbenv-version
+.rvmrc
+spec/models/apid_spec.rb
+coverage.data
