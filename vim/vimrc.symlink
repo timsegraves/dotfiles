@@ -63,6 +63,10 @@ nnoremap <S-SPACE> <PAGEUP>
 nmap / /\v
 cmap s/ s/\v
 
+" Switch windows
+"nmap <D-]> :maca _cycleWindowsBackwards:<CR> 
+nmap <D-'> :maca _cycleWindows:<CR>
+
 " Reload vimrc on edit and a shortcut
 nmap <silent> ;v :next $MYVIMRC<CR>
 augroup VimReload
