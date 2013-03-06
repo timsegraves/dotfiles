@@ -124,34 +124,34 @@ function! Git_Repo_Cdup() " Get the relative path to repo root
     endif
 endfunction
 
-function! CD_Git_Root()
-    execute 'cd '.Git_Repo_Cdup()
-    let curdir = getcwd()
-    echo 'CWD now set to: '.curdir
-endfunction
-nnoremap <LEADER>gr :call CD_Git_Root()<cr>
-
-" Define the wildignore from gitignore. Primarily for CommandT
-function! WildignoreFromGitignore()
-    silent call CD_Git_Root()
-    let gitignore = '.gitignore'
-    if filereadable(gitignore)
-        let igstring = ''
-        for oline in readfile(gitignore)
-            let line = substitute(oline, '\s|\n|\r', '', "g")
-            if line =~ '^#' | con | endif
-            if line == '' | con  | endif
-            if line =~ '^!' | con  | endif
-            if line =~ '/$' | let igstring .= "," . line . "*" | con | endif
-            let igstring .= "," . line
-        endfor
-        let execstring = "set wildignore=".substitute(igstring,'^,','',"g")
-        execute execstring
-        echo 'Wildignore defined from gitignore in: '.getcwd()
-    else
-        echo 'Unable to find gitignore'
-    endif
-endfunction
+"function! CD_Git_Root()
+"    execute 'cd '.Git_Repo_Cdup()
+"    let curdir = getcwd()
+"    echo 'CWD now set to: '.curdir
+"endfunction
+"nnoremap <LEADER>gr :call CD_Git_Root()<cr>
+"
+"" Define the wildignore from gitignore. Primarily for CommandT
+"function! WildignoreFromGitignore()
+"    silent call CD_Git_Root()
+"    let gitignore = '.gitignore'
+"    if filereadable(gitignore)
+"        let igstring = ''
+"        for oline in readfile(gitignore)
+"            let line = substitute(oline, '\s|\n|\r', '', "g")
+"            if line =~ '^#' | con | endif
+"            if line == '' | con  | endif
+"            if line =~ '^!' | con  | endif
+"            if line =~ '/$' | let igstring .= "," . line . "*" | con | endif
+"            let igstring .= "," . line
+"        endfor
+"        let execstring = "set wildignore=".substitute(igstring,'^,','',"g")
+"        execute execstring
+"        echo 'Wildignore defined from gitignore in: '.getcwd()
+"    else
+"        echo 'Unable to find gitignore'
+"    endif
+"endfunction
 nnoremap <LEADER>cti :call WildignoreFromGitignore()<cr>
 nnoremap <LEADER>cwi :set wildignore=''<cr>:echo 'Wildignore cleared'<cr>
 
@@ -163,7 +163,8 @@ nmap <leader>gy :call CD_Git_Root()<cr>\|:CommandT app/assets/stylesheets<cr>
 nmap <leader>gs :call CD_Git_Root()<cr>\|:CommandT spec<cr>
 nmap <leader>gt :call CD_Git_Root()<cr>\|:CommandT app/assets/templates<cr>
 nmap <leader>gl :call CD_Git_Root()<cr>\|:CommandT app/lib<cr>
-nmap <leader>t :call CD_Git_Root()<cr>\|:CommandT <cr>
+"nmap <leader>t :call CD_Git_Root()<cr>\|:CommandT <cr>
+nmap <leader>t :CtrlP <cr>
 
 " ----------------------------------------------------------------------------
 " Visual Cues
