@@ -26,6 +26,11 @@ set virtualedit=block      " allow virtual edit in visual block ..
 
 au BufReadPost Vagrantfile set syntax=ruby
 au BufReadPost *.god set syntax=ruby
+au BufReadPost *.hamlet set syntax=hamlet
+au BufReadPost *.cassius set syntax=cassius
+au BufReadPost *.julius set syntax=julius
+au BufReadPost *.lucius set syntax=lucius
+
 au BufNewFile,BufRead *.less set filetype=less
 au BufNewFile,BufRead *.json_builder set filetype=ruby
 filetype plugin indent on " Enable filetype-specific indenting and plugins
@@ -39,6 +44,8 @@ execute pathogen#infect()
 
 " lead with ,
 let mapleader = ","
+
+let g:gist_clip_command = 'pbcopy'
 
 " exit to normal mode with 'jj'
 inoremap jj <ESC>
@@ -188,5 +195,12 @@ function! StripWhitespace ()
 endfunction
 map ,s :call StripWhitespace ()<CR>
 
+if (&t_Co == 256 || &t_Co == 88) && !has('gui_running') &&
+      \ filereadable(expand("$HOME/.vim/plugin/guicolorscheme.vim"))
+  runtime! plugin/guicolorscheme.vim
+  GuiColorScheme lucius
+else
+  colorscheme lucius
+endif
 
 Bundle 'YouCompleteMe'
