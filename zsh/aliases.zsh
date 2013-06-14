@@ -1,6 +1,5 @@
 alias reload!='. ~/.zshrc'
 alias v="/Applications/MacVim.app/Contents/MacOS/vim -g"
-alias vi="/Applications/MacVim.app/Contents/MacOS/vim"
 alias taillog="tail -f log/development.log | grep -vE \"(^\s*$|asset)\""
 alias tailtestlog="tail -f log/test.log | grep -vE \"(^\s*$|asset)\""
 alias gem-unchanged="git update-index --assume-unchanged Gemfile && git update-index --assume-unchanged Gemfile.lock"

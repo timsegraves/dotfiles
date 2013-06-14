@@ -45,6 +45,7 @@ execute pathogen#infect()
 " lead with ,
 let mapleader = ","
 
+
 let g:gist_clip_command = 'pbcopy'
 
 " exit to normal mode with 'jj'
@@ -195,12 +196,15 @@ function! StripWhitespace ()
 endfunction
 map ,s :call StripWhitespace ()<CR>
 
+" color
+let &t_Co=256
+
 if (&t_Co == 256 || &t_Co == 88) && !has('gui_running') &&
       \ filereadable(expand("$HOME/.vim/plugin/guicolorscheme.vim"))
   runtime! plugin/guicolorscheme.vim
   GuiColorScheme lucius
 else
-  colorscheme lucius
 endif
+colorscheme lucius
 
 Bundle 'YouCompleteMe'
