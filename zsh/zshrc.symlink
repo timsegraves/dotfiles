@@ -58,3 +58,4 @@ export PATH="$HOME/.cabal/bin:$PATH"
 # TMUXINATOR
 export EDITOR='vim'
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+[[ -s "/home/vagrant/.rvm/scripts/rvm" ]] && . "/home/vagrant/.rvm/scripts/rvm"
