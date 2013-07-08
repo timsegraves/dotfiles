@@ -1,0 +1,29 @@
+session:
+  name: "my-awesome-session"
+    windows:
+      - name: "editor"
+        layout: main-vertical
+        clear: true
+        options:
+          synchronize-panes: true
+        root: "/home/sendgrid/web_rails"
+        filters:
+          before:
+            - "echo 'Let’s use ruby-1.9.3 for each pane in this window.'"
+        panes:
+          [panes list]
+      - name: "console"
+        root: "/home/sendgrid/web_rails"
+        filters: 
+          after: 
+            - "rails c"
+      - name: "server"
+        root: "/home/sendgrid/web_rails"
+        filters: 
+          after: 
+            - "rails s"
+      - name: "foreman"
+        root: "/home/sendgrid/web_rails"
+        filters: 
+          after: 
+            - "foreman start"
