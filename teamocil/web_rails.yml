@@ -2,17 +2,18 @@ session:
   name: "web_rails"
   windows:
     - name: "editor"
-      layout: main-vertical
       clear: true
       options:
-        synchronize-panes: true
+        #synchronize-panes: true
       root: "/home/sendgrid/web_rails"
       filters:
         before:
           - "echo 'Let’s use ruby-1.9.3 for each pane in this window.'"
       panes:
         - cmd: "vim ."
+          width: 70
         - cmd: "ls"
+          width: 30
     - name: "console"
       root: "/home/sendgrid/web_rails"
       panes:

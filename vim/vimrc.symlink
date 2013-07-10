@@ -207,4 +207,7 @@ else
 endif
 colorscheme lucius
 
+" mouse scrolling
+set mouse=a
+
 Bundle 'YouCompleteMe'
