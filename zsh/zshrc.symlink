@@ -55,6 +55,10 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # Yesod
 export PATH="$HOME/.cabal/bin:$PATH"
 
+# Fix cursor issue
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 # TMUXINATOR
 export EDITOR='vim'
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator

@@ -11,9 +11,10 @@ session:
           - "echo 'Let’s use ruby-1.9.3 for each pane in this window.'"
       panes:
         - cmd: "vim ."
-          width: 70
+    - name: "shell"
+      root: "/home/sendgrid/web_rails"
+      panes:
         - cmd: "ls"
-          width: 30
     - name: "console"
       root: "/home/sendgrid/web_rails"
       panes:
@@ -26,3 +27,6 @@ session:
       root: "/home/sendgrid/web_rails"
       panes:
         - cmd: "foreman start"
+          width: 50
+        - cmd: "spork"
+          width: 50
