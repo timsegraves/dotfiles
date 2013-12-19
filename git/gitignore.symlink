@@ -13,3 +13,4 @@ spec/models/apid_spec.rb
 coverage.data
 .ruby-version
 log/*.log.*
+.idea*

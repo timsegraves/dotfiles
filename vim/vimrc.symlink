@@ -45,6 +45,8 @@ execute pathogen#infect()
 " lead with ,
 let mapleader = ","
 
+" Instant markdown
+let g:instant_markdown_slow = 1
 
 let g:gist_clip_command = 'pbcopy'
 
@@ -215,6 +217,7 @@ set mouse=a
 let g:no_turbux_mappings = 1
 map <leader>m <Plug>SendTestToTmux
 map <leader>M <Plug>SendFocusedTestToTmux
-let g:turbux_command_rspec = 'rspec --drb'
+"let g:turbux_command_rspec = 'rspec --drb'
+let g:turbux_command_rspec = 'bundle exec rspec --color'
 
 Bundle 'YouCompleteMe'
