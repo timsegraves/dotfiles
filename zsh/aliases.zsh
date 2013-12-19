@@ -9,3 +9,4 @@ alias tunnel-suspicious-held="ssh -N -L7078:10.80.42.159:7077 root@ben-dev1.send
 alias tunnel-irs="ssh root@dev.sendgrid.net -L 8111:10.9.180.104:8111 -N"
 alias tunnel-boss-staging="ssh segraves@stagejump.sjc1.sendgrid.net -L 8222:174.36.32.204:443 -N"
 alias be="bundle exec "
+alias rails="rails"

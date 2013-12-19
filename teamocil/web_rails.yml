@@ -8,7 +8,7 @@ session:
       root: "/home/sendgrid/web_rails"
       filters:
         before:
-          - "echo 'Let’s use ruby-1.9.3 for each pane in this window.'"
+          - "git pull sendgrid production"
       panes:
         - cmd: "vim ."
     - name: "shell"
