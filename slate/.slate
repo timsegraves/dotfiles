@@ -55,6 +55,7 @@ layout 1monitor 'Twitter':REPEAT                         ${rightthin}
 layout 1monitor 'Adium':REPEAT                           ${leftverythin}
 layout 1monitor 'HipChat':REPEAT                         ${center60}
 layout 1monitor 'Finder':REPEAT                         ${center60}
+layout 1monitor 'IntelliJ':REPEAT                  ${1-full}
 
 # Laptop
 layout laptop 'iTerm':MAIN_FIRST                       ${1-full}
@@ -68,6 +69,7 @@ layout laptop 'Twitter':REPEAT                         ${rightless}
 layout laptop 'Adium':REPEAT                           ${leftless}
 layout laptop 'HipChat':REPEAT                         ${leftmost}
 layout laptop 'Finder':REPEAT                         ${leftmost}
+layout laptop 'IntelliJ':REPEAT                  ${1-full}
 
 # Default Layouts
 default 1monitor  resolutions:${mon-thunderbolt}
@@ -88,7 +90,7 @@ bind pad+ throw next
 bind pad. focus behind
 bind pad/ layout 1monitor
 
-bind e:cmd  ${showNormalHint}
+#bind e:cmd  ${showNormalHint}
 bind 9:cmd  layout laptop
 
 # ======================================

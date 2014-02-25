@@ -114,7 +114,7 @@ set whichwrap+=<,>,h,l,[,] " backspace and cursor keys wrap to
 set shortmess=filtIoOA     " shorten messages
 set report=0               " tell us about changes
 set nostartofline          " don't jump to the start of line when scrolling
-"set wildignore+="tmp/*","coverage/*"
+set wildignore+="tmp/*","coverage/*","*.pyc"
 
 " -----------------------------------------------------------------------------
 " IGNORE STUFF
@@ -208,6 +208,14 @@ if (&t_Co == 256 || &t_Co == 88) && !has('gui_running') &&
 else
 endif
 colorscheme lucius
+
+" Some Linux distributions set filetype in /etc/vimrc.
+" Clear filetype flags before changing runtimepath to force Vim to reload them.
+filetype off
+filetype plugin indent off
+set runtimepath+=$GOPATH/misc/vim
+filetype plugin indent on
+syntax on
 
 " mouse scrolling
 set mouse=a
