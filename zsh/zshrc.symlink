@@ -67,8 +67,9 @@ export EDITOR='vim'
 # added by travis gem
 [ -f /Users/timsegraves/.travis/travis.sh ] && source /Users/timsegraves/.travis/travis.sh
 
-export GOPATH=/Users/timsegraves/Projects
+export GOPATH=/Users/timsegraves/Projects/gospace
 export GOROOT=/usr/local/Cellar/go/1.2/libexec
+export PATH=$PATH:$GOPATH/bin
 
 alias vagrant /usr/bin/vagrant
 

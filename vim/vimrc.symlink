@@ -175,6 +175,7 @@ nmap <leader>gt :call CD_Git_Root()<cr>\|:CommandT app/assets/templates<cr>
 nmap <leader>gl :call CD_Git_Root()<cr>\|:CommandT app/lib<cr>
 "nmap <leader>t :call CD_Git_Root()<cr>\|:CommandT <cr>
 nmap <leader>t :CtrlP <cr>
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:30,results:30'
 
 " ----------------------------------------------------------------------------
 " Visual Cues
@@ -201,13 +202,15 @@ map ,s :call StripWhitespace ()<CR>
 " color
 let &t_Co=256
 
+set background=dark
 if (&t_Co == 256 || &t_Co == 88) && !has('gui_running') &&
       \ filereadable(expand("$HOME/.vim/plugin/guicolorscheme.vim"))
   runtime! plugin/guicolorscheme.vim
-  GuiColorScheme lucius
+  GuiColorScheme solarized
 else
 endif
-colorscheme lucius
+"colorscheme lucius
+colorscheme solarized
 
 " Some Linux distributions set filetype in /etc/vimrc.
 " Clear filetype flags before changing runtimepath to force Vim to reload them.

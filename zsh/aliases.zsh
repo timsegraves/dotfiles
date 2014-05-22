@@ -11,3 +11,4 @@ alias tunnel-boss-staging="ssh segraves@stagejump.sjc1.sendgrid.net -L 8222:174.
 alias be="bundle exec "
 alias rails="rails"
 alias ls="ls -loa"
+alias chrome="osascript ~/Dropbox/AppleScripts/OpenChrome.scpt"

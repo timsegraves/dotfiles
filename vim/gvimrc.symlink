@@ -1,4 +1,5 @@
-colorscheme lucius
+set background=dark
+colorscheme solarized
 set anti
 set lines=999 columns=192
 set guioptions=egmrt
