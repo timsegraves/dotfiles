@@ -49,6 +49,7 @@ layout 1monitor 'RubyMine':MAIN_FIRST                       ${1-full}
 layout 1monitor 'GitX':MAIN_FIRST                       ${1-full}
 layout 1monitor 'MacVim':MAIN_FIRST              		 ${1-full}
 layout 1monitor 'Google Chrome':REPEAT                   ${leftmost}
+layout 1monitor 'Safari':REPEAT                   ${leftmost}
 layout 1monitor 'Airmail':REPEAT                         ${1-full}
 layout 1monitor 'Sketch':REPEAT                         ${1-full}
 layout 1monitor 'Twitter':REPEAT                         ${rightthin}
@@ -63,6 +64,7 @@ layout laptop 'MacVim':MAIN_FIRST              		 ${1-full}
 layout laptop 'RubyMine':MAIN_FIRST                       ${1-full}
 layout laptop 'GitX':MAIN_FIRST                       ${1-full}
 layout laptop 'Google Chrome':REPEAT                   ${1-full}
+layout laptop 'Safari':REPEAT                   ${1-full}
 layout laptop 'Airmail':REPEAT                         ${1-full}
 layout laptop 'Sketch':REPEAT                         ${1-full}
 layout laptop 'Twitter':REPEAT                         ${rightless}
@@ -70,6 +72,7 @@ layout laptop 'Adium':REPEAT                           ${leftless}
 layout laptop 'HipChat':REPEAT                         ${leftmost}
 layout laptop 'Finder':REPEAT                         ${leftmost}
 layout laptop 'IntelliJ':REPEAT                  ${1-full}
+layout laptop 'Mailbox (Beta)':REPEAT                  ${1-full}
 
 # Default Layouts
 default 1monitor  resolutions:${mon-thunderbolt}
