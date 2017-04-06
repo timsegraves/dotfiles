@@ -2,3 +2,7 @@
 ruby=haml
 --type-add
 javascript=coffee
+# Handle .md files
+--type-set=md=.mkd
+--type-add=md=.md
+

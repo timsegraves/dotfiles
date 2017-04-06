@@ -249,3 +249,4 @@ if executable('ag')
 endif
 
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+set runtimepath^=~/.vim/bundle/ag
